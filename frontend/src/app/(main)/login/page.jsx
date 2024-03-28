@@ -1,25 +1,39 @@
 import React from 'react';
-import './page.css'
+
 const Login = () => {
   return (
     <>
-      <div className='w-full h-full bg-white place-content-center py-10 flex md:flex-row flex-col '>
-        <div className='md:w-3/5 h-96 bg-gray-200 from-gray-200 flex md:flex-row flex-col-reverse py-8'>
-          <div className='md:w-2/5 w-dvw h-80 bg-gray-50 text-black ml-0 md:ml-auto'>
-            <form>
-              <h2 className='md:text-2xl text-base font-semibold px-3 py-4' >Login to your account</h2>
-              <div className='p-3 flex flex-col py-5'>
-                <label htmlFor="email">email</label>
-                <input className='py-3' type="text" placeholder='enter your email' name='name' required />
-                <label htmlFor="psw">Password</label>
-                <input className='py-3' type="password" placeholder="Enter Password" name="psw" required></input>
+      <div className='bg-yellow-400 flex justify-center'><h1 className='lg:text-5xl font-extrabold text-pink-700 py-6'>Welcome Back!</h1></div>
+      <div className="hero ">
 
-              </div>
-              <button className='bg-blue-600 text-white p-2 rounded-xl ml-3' type="submit">Login</button>
-            </form>
-          </div>
-          <div className='md:w-2/4 w-dvw h-80 bg-blue-200 text-black md:mr-auto mr-0 back-img  '>
-            <div className='text-6xl text-slate-300 mt-9 md:ml-20'>welcome back!</div>
+        <div className='bg-slate-200 mb-5 mt-5'>
+          <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="text-center lg:text-left">
+              <h1 className="text-5xl font-bold">Login now!</h1>
+              <p className="py-6 text-slate-900">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            </div>
+            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+              <form className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input type="email" placeholder="email" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input type="password" placeholder="password" className="input input-bordered" required />
+                  <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                  </label>
+                </div>
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
