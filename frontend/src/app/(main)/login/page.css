@@ -1,11 +1,5 @@
-.back-img {
-    background-image: url(gradient-grainy-texture_23-2148981502.jpg);
-    background-size: cover;
+.hero {
+    background-image: url(back-img.jpg);
 
-}
 
-@media only screen and (max-width: 700px) {
-    .back-img {
-        width: auto;
-    }
 }

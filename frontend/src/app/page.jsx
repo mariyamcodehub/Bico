@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className='flex lg:justify-center lg:p-2 p-4 bg-slate-900 shadow-lg'><h1 className="text-3xl font-bold text-yellow-400">
+      <div className='flex lg:justify-center lg:p-2 p-4 bg-slate-900 shadow-lg'><h1 className="text-3xl font-bold text-white">
         Best Platform for Collaboration!
       </h1></div>
       <div className='grid lg:grid-cols-2 grid-cols-1'>
