@@ -1,16 +1,22 @@
 import React from 'react'
-
+import './page.css'
 const Signup = () => {
   return (
     <>
-      <div className="hero min-h-screen bg-slate-800">
+       <div className="hero min-h-screen bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">New here? ...Sign up!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <h1 className="text-5xl font-bold ms-8">Sign Up!</h1>
+            <p className="py-8 px-8">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input type="Name" placeholder="Name" className="input input-bordered" required />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -19,15 +25,25 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">Create Password</span>
                 </label>
-                <input type="password" placeholder="password" className="input input-bordered" required />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
+                <input type="Create Password" placeholder="Create Password" className="input input-bordered" required />
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign up</button>
+              <div className="form-control">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Confirm Password</span>
+                  </label>
+                  <input type="Confirm password" placeholder="Confirm password" className="input input-bordered" required />
+                  
+                </div>
+                <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Social-Link</span>
+                </label>
+                <input type="Social-Link" placeholder="Social-Link" className="input input-bordered" required />
+              </div>
+                <button type='submit' className="btn btn-primary mt-5">Sign Up</button>
               </div>
             </form>
           </div>
