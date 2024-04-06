@@ -3,12 +3,13 @@ import Navbar from './(main)/navbar'
 import Stats from './(main)/stats/page'
 import AdminProfile from './admin/profile/page'
 import UserProfile from './user/profile/page'
+import Signup from './(main)/signup/page'
 
 const Home = () => {
   return (
     <>
       <Navbar />
-
+      <Signup />
       <div className='flex lg:justify-center lg:p-2 p-4 bg-slate-900 shadow-lg'><h1 className="text-3xl font-bold text-white">
         Best Platform for Collaboration!
       </h1></div>

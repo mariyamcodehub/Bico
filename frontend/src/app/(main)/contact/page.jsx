@@ -3,7 +3,7 @@ import React from 'react'
 const Contact = () => {
   return (
 
-    <div className="container my-24 mx-auto md:px-6">
+    <div className="container mx-auto md:px-6 ">
       {/* Section: Design Block */}
       <section className="mb-32">
         <div className="relative h-[300px] overflow-hidden bg-cover bg-[50%] bg-no-repeat bg-[url('https://mdbcdn.b-cdn.net/img/new/textures/full/284.jpg')]"></div>
@@ -53,9 +53,13 @@ const Contact = () => {
                           </svg>
                         </div>
                       </div>
-                      <div className="ml-6">
+                      <div className="ml-6 ">
                         <h2 className="text-lg font-bold mb-2">Technical Support</h2>
                         <p className="text-neutral-500">Need help? Check our knowledge base or open a support ticket.</p>
+                        <h4 className='font-bold pt-2'>Email</h4>
+                        <p><a href="#">mariyamkha603@gmail.com</a></p>
+                        <h4 className='font-bold pt-2'>Contact</h4>
+                        <p>0522-969648</p>
                       </div>
                     </div>
                   </div>
