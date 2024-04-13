@@ -32,7 +32,6 @@ const Signup = () => {
   })
   return (
     <>
-<<<<<<< HEAD
       <div className="hero min-h-screen md:justify-end ">
         <div className="hero-content mr-20 w-full">
 
@@ -41,16 +40,6 @@ const Signup = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white">Name</span>
-=======
-      <div className="hero min-h-screen md:justify-end">
-        <div className="hero-content mr-20 w-full">
-          
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-200">
-            <form onSubmit={signupForm.handleSubmit} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Influencer-Name</span>
->>>>>>> a2175102f2a8f31812ed3bc6596bce2a910e277b
                 </label>
                 <input type="name" placeholder="Name" id='name' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.name} />
                 {
@@ -104,11 +93,7 @@ const Signup = () => {
                 <button disabled={signupForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Sign Up</button>
               </div>
             </form>
-<<<<<<< HEAD
             <p className='p-3 text-white mx-auto'>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
-=======
-            <p className='mx-auto pb-2 text-black '>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
->>>>>>> a2175102f2a8f31812ed3bc6596bce2a910e277b
           </div>
         </div>
 

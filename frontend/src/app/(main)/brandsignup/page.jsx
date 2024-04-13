@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-<<<<<<< HEAD
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
@@ -8,14 +7,6 @@ import './page.css'
 
 
 const brandSignup = () => {
-=======
-
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import Link from 'next/link';
-
-const Signup = () => {
->>>>>>> a2175102f2a8f31812ed3bc6596bce2a910e277b
 
   const signupValidationSchema = Yup.object().shape({
     email: Yup.string().email('email is invalid').required('email is required'),
@@ -113,9 +104,5 @@ const Signup = () => {
   )
 }
 
-<<<<<<< HEAD
 
 export default brandSignup
-=======
-export default Signup
->>>>>>> a2175102f2a8f31812ed3bc6596bce2a910e277b
