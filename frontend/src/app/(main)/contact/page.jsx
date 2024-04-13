@@ -68,19 +68,11 @@ const Contact = () => {
                     <div className="flex items-start">
                       <div className="shrink-0">
                         <div className="inline-block rounded-md bg-primary-100 p-4 text-primary">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-6 w-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.38 12.161l4.395 4.394 8.35-8.35-4.394-4.395-8.35 8.35zm-4.698 4.697l3.031-1.95m-2.32-2.82l4.482 4.482M9.94 8.5l3.72 3.72M13.66 8.5l-1.88 1.88m1.88 0l-1.88-1.88" />
-                          </svg>
+
                         </div>
                       </div>
-                      <div className="ml-6">
-                        <h2 className="text-lg font-bold mb-2">Customer Care</h2>
-                        <p className="text-neutral-500">Interested in our products? Get in touch with our sales team.</p>
-                      </div>
-                      <div className="ml-6">
-                        <h2 className="text-lg font-bold mb-2">Address</h2>
-                        <p className="text-neutral-500">Interested in our products? Get in touch with our sales team.</p>
-                      </div>
+
+
                     </div>
                   </div>
                 </div>

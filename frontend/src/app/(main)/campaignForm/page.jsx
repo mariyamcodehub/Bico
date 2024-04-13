@@ -61,7 +61,7 @@ const campaignForm = ({ coverImage, coverTitle, coverDescription }) => {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="text" className="block text-sm font-medium text-gray-700">Choose file</label>
+                                    <label htmlFor="text" className="block text-sm font-medium text-gray-700">Sample</label>
                                     <Field
                                         id="file"
                                         name="file"
