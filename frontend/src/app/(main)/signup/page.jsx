@@ -32,17 +32,14 @@ const Signup = () => {
   })
   return (
     <>
-      <div className="hero min-h-screen text-white">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold ms-8">Sign Up!</h1>
-            <p className="py-8 px-8">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-200">
+      <div className="hero min-h-screen md:justify-end ">
+        <div className="hero-content mr-20 w-full">
+
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-stone-700 opacity-75 hover:opacity-100  ">
             <form onSubmit={signupForm.handleSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-white">Name</span>
                 </label>
                 <input type="name" placeholder="Name" id='name' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.name} />
                 {
@@ -53,7 +50,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input type="email" placeholder="email" className="input input-bordered" id="email"
                   onChange={signupForm.handleChange}
@@ -65,7 +62,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Create Password</span>
+                  <span className="label-text text-white">Create Password</span>
                 </label>
                 <input type="password" placeholder="Create Password" className="input input-bordered" id="password"
                   onChange={signupForm.handleChange}
@@ -78,7 +75,7 @@ const Signup = () => {
               <div className="form-control">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Confirm Password</span>
+                    <span className="label-text text-white">Confirm Password</span>
                   </label>
                   <input type="cpassword" placeholder="Confirm password" className="input input-bordered" id='cpassword' onChange={signupForm.handleChange}
                     value={signupForm.values.cpassword} required />
@@ -89,16 +86,17 @@ const Signup = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Social-Link</span>
+                    <span className="label-text text-white">Social-Link</span>
                   </label>
                   <input type="social" placeholder="Social-Link" className="input input-bordered" id='social' required />
                 </div>
-                <button disabled={signupForm.isSubmitting} type='submit' className="btn btn-primary mt-5">Sign Up</button>
+                <button disabled={signupForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Sign Up</button>
               </div>
             </form>
-            <p className='p-3 '>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
+            <p className='p-3 text-white mx-auto'>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
           </div>
         </div>
+
       </div>
     </>
   )
