@@ -19,19 +19,11 @@ const Login = () => {
   return (
     <>
 
-<<<<<<< HEAD
       <div className="hero min-h-screen bg-blend-luminosity">
         <div className="flex items-center justify-center bg-base-100 rounded-xl">
           <div className={`transition-opacity duration-700 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
             <div className="p-8 transition-all transform bg-transparent  shadow-2xl rounded-lg scale-95 hover:scale-100">
               <h2 className="text-2xl font-semibold text-center ">Login</h2>
-=======
-      <div className="hero min-h-screen bg-blend-luminosity ">
-        <div className="flex items-center justify-center bg-transparent">
-          <div className={`transition-opacity duration-700 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="p-8 transition-all transform bg-transparent  shadow-2xl rounded-lg scale-95 hover:scale-100">
-              <h2 className="text-2xl font-semibold text-center ">Login!</h2>
->>>>>>> 788cba7c4f0a6dd5f039b0730c5e176014d5f7ba
               <Formik
                 initialValues={{ email: '', password: '' }}
                 onSubmit={handleSubmit}
