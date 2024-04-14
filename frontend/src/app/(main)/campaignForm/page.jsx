@@ -19,10 +19,10 @@ const campaignForm = ({ coverImage, coverTitle, coverDescription }) => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 img">
+        <div className="flex items-center justify-end min-h-screen bg-gray-100 img">
 
             <div className={`transition-opacity duration-700 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="p-8 transition-all transform bg-white shadow-xl rounded-lg scale-95 hover:scale-100">
+                <div className="p-8 mr-12 transition-all transform bg-white shadow-xl rounded-lg scale-95 hover:scale-100">
                     <h2 className="text-2xl font-semibold text-center text-indigo-600">Add Campaign</h2>
                     <Formik
                         initialValues={{ email: '', password: '' }}
