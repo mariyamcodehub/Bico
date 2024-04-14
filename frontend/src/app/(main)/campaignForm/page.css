@@ -1,3 +1,5 @@
 .img {
-    background-image: url(Home.png);
+    background-image: url(campaign-signup.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }

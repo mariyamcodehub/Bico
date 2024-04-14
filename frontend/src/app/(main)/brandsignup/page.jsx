@@ -37,11 +37,11 @@ const brandSignup = () => {
         <div className="hero-content mr-20 w-full">
 
 
-          <div className="card shrink-0 shadow-2xl bg-slate-500 opacity-75 hover:opacity-100 ">
+          <div className="card shrink-0 shadow-2xl bg-base opacity-75 hover:opacity-100 ">
             <form onSubmit={signupForm.handleSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-white">Brand Name</span>
+                  <span className="label-text ">Brand Name</span>
                 </label>
                 <input type="name" placeholder="Brand Name" id='name' className="input input-bordered " onChange={signupForm.handleChange} value={signupForm.values.name} />
                 {
@@ -52,7 +52,7 @@ const brandSignup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-white">Email</span>
+                  <span className="label-text ">Email</span>
                 </label>
                 <input type="email" placeholder="email" className="input input-bordered" id="email"
                   onChange={signupForm.handleChange}
@@ -64,7 +64,7 @@ const brandSignup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-white">Create Password</span>
+                  <span className="label-text ">Create Password</span>
                 </label>
                 <input type="password" placeholder="Create Password" className="input input-bordered" id="password"
                   onChange={signupForm.handleChange}
@@ -77,7 +77,7 @@ const brandSignup = () => {
               <div className="form-control">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white">Confirm Password</span>
+                    <span className="label-text ">Confirm Password</span>
                   </label>
                   <input type="cpassword" placeholder="Confirm password" className="input input-bordered" id='cpassword' onChange={signupForm.handleChange}
                     value={signupForm.values.cpassword} required />
@@ -88,14 +88,14 @@ const brandSignup = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-white">Website-Link</span>
+                    <span className="label-text ">Website-Link</span>
                   </label>
                   <input type="website" placeholder="Website-Link" className="input input-bordered" id='website' required />
                 </div>
                 <button disabled={signupForm.isSubmitting} type='submit' className="btn btn-primary mt-5">Sign Up</button>
               </div>
             </form>
-            <p className='p-3 text-white mx-auto'>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
+            <p className='p-3  mx-auto'>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
           </div>
         </div>
 

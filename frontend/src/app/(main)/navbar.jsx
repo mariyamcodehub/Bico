@@ -41,8 +41,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-circle mx-3" href='signup'>Sign Up</a>
-          <a className="btn btn-primary" href='/login'>Login</a>
+          <a className="btn  mx-3" href='signup'>Sign Up</a>
+          <a className="btn " href='/login'>Login</a>
         </div>
       </div>
     </>
