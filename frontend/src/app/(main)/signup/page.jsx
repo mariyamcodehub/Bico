@@ -1,32 +1,53 @@
-'use client'
+'use client';
 import React from 'react'
 import './page.css'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { enqueueSnackbar } from 'notistack';
 
 const Signup = () => {
 
+  const router = useRouter();
+
   const signupValidationSchema = Yup.object().shape({
     email: Yup.string().email('email is invalid').required('email is required'),
-    name: Yup.string().required('name is required'),
+    username: Yup.string().required('name is required'),
     password: Yup.string().required('password is required').min(6, 'too short').matches(/[a-z]/, 'password must contain lowercase letter').matches(/[A-Z]/, 'password must contain uppercase letter').matches(/[0-9]/, 'password must contain a number').matches(/\W/, 'password must contain special symbol'),
     cpassword: Yup.string().required('confirm password is required').oneOf([Yup.ref('password'), null], 'password must match')
   })
 
   const signupForm = useFormik({
     initialValues: {
-      name: '',
+      username: '',
       email: '',
       password: '',
       cpassword: '',
       social: ''
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
+
+
       setTimeout(() => {
         console.log(values);
         resetForm();
       }, 2000)
+
+      const res = await fetch("http://localhost:5000/user/add", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log(res.status);
+      if (res.status === 200) {
+        enqueueSnackbar("user addedsuccessfully", { variant: "success" })
+        router.push("/login")
+      } else {
+        enqueueSnackbar("somthing went worng", { variant: "warning" })
+      }
     },
     validationSchema: signupValidationSchema
   })
@@ -41,10 +62,10 @@ const Signup = () => {
                 <label className="label">
                   <span className="label-text ">Name</span>
                 </label>
-                <input type="name" placeholder="Name" id='name' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.name} />
+                <input type="name" placeholder="Name" id='username' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.username} />
                 {
-                  signupForm.touched.name &&
-                  <small className="text-red-500">{signupForm.errors.name}</small>
+                  signupForm.touched.username &&
+                  <small className="text-red-500">{signupForm.errors.username}</small>
                 }
 
               </div>

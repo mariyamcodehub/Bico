@@ -1,5 +1,5 @@
-.img {
-    background-image: url(campaign-signup.jpg);
+.hero {
+    background-image: url(bg-campaign.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
