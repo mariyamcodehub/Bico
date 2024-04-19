@@ -65,9 +65,9 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text ">Create Password</span>
+                  <span className="label-text ">Password</span>
                 </label>
-                <input type="password" placeholder="Create Password" className="input input-bordered" id="password"
+                <input type="password" placeholder=" Password" className="input input-bordered" id="password"
                   onChange={loginForm.handleChange}
                   value={loginForm.values.password} required />
                 {
