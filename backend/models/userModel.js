@@ -4,7 +4,7 @@ const mySchema = new Schema({
     username : {type : String, required : true},
     email:String,
     password:String,
-    image : String,
+    image : Array,
     postedOn : Date,
 });
 

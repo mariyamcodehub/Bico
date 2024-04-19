@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Model = require('../models/campaignModel');
+const Model = require('../models/feedbackModel');
 
 router.post('/add', (req, res) => {
     console.log(req.body);
@@ -19,7 +19,7 @@ router.post("/authenticate",(req,res) => {
         if(result){
             res.status(200).json(result)
         }else{
-            res.status(401).json({message:"inavlide credentials"})
+            res.status(401).json({message:"invalid credentials"})
         }
     }).catch((err) => {
         res.status(500).json(err);
@@ -28,7 +28,7 @@ router.post("/authenticate",(req,res) => {
 })
 
 router.get('/getall', (req, res) => {
-    Model.find({})
+    Model.find()
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {

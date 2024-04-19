@@ -4,7 +4,7 @@ const mySchema = new Schema({
     name : String,
     title:String,
     description:String,
-    coverImage : String,
+    coverImage : Array,
     postedOn : Date,
     incentive : {type : String, default : 0}
 });
