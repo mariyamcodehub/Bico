@@ -27,7 +27,7 @@ const feedbackform = () => {
                 resetForm();
             }, 2000)
 
-            const res = await fetch("http://localhost:5000/user/add", {
+            const res = await fetch("http://localhost:5000/feedback/add", {
                 method: "POST",
                 body: JSON.stringify(values),
                 headers: {
@@ -36,7 +36,7 @@ const feedbackform = () => {
             });
             console.log(res.status);
             if (res.status === 200) {
-                enqueueSnackbar("user addedsuccessfully", { variant: "success" })
+                enqueueSnackbar("feedback added successfully", { variant: "success" })
                 router.push("/about")
             } else {
                 enqueueSnackbar("somthing went worng", { variant: "warning" })
@@ -55,10 +55,10 @@ const feedbackform = () => {
                                 <label className="label">
                                     <span className="label-text ">Name</span>
                                 </label>
-                                <input type="name" placeholder="Name" id='username' className="input input-bordered" onChange={feedbackform.handleChange} value={feedbackform.values.username} />
+                                <input type="text" placeholder="Name" id='name' className="input input-bordered" onChange={feedbackform.handleChange} value={feedbackform.values.name} />
                                 {
-                                    feedbackform.touched.username &&
-                                    <small className="text-red-500">{feedbackform.errors.username}</small>
+                                    feedbackform.touched.name &&
+                                    <small className="text-red-500">{feedbackform.errors.name}</small>
                                 }
 
                             </div>

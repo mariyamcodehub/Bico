@@ -10,7 +10,7 @@ import { enqueueSnackbar } from 'notistack';
 
 const CampaignForm = () => {
 
-    const [campaign, setCampaign] = useState('');
+    const [campaign, setCampaign] = useState([]);
 
     const uploadImage = async (e) => {
         const file = e.target.value[0];
@@ -22,7 +22,7 @@ const CampaignForm = () => {
             body: fd,
         }).then((res) => {
             if (res.status === 200) {
-                console.log("file uploade");
+                console.log("file upload");
                 enqueueSnackbar("image uploaded successfully", { variant: "success" })
             }
         });
@@ -38,13 +38,14 @@ const CampaignForm = () => {
         },
         onSubmit: async (values, { resetForm }) => {
 
-
+            values.coverImage = campaign.name;
             setTimeout(() => {
                 console.log(values);
+
                 resetForm();
             }, 2000)
 
-            values.coverImage = campaign.name;
+
 
             const res = await fetch("http://localhost:5000/campaign/add", {
                 method: "POST",
@@ -58,7 +59,7 @@ const CampaignForm = () => {
                 enqueueSnackbar("campaign added successfully", { variant: "success" })
 
             } else {
-                enqueueSnackbar("somthing went worng", { variant: "warning" })
+                enqueueSnackbar("something went worng", { variant: "warning" })
             }
         },
 
@@ -118,7 +119,7 @@ const CampaignForm = () => {
                                         <span className="label-text ">Incentive</span>
                                     </label>
                                     <input type="text" placeholder="Incentive" className="input input-bordered" id='incentive'
-                                        value={campainForm.values.incetive}
+                                        value={campainForm.values.incentive}
                                         onChange={campainForm.handleChange} required />
                                     {
                                         campainForm.touched.incentive &&
