@@ -35,11 +35,11 @@ const Home = () => {
       <h1 className="mb-5 text-5xl font-bold "> BICO! </h1>
       <h2 className='text-2xl font-bold'>"Brand Influencer Collaboration"</h2>
       <p className="mb-5 text-xl"> BICO is a platform for all the social media influencers and Brands/Companies to collaborate!</p>
-      <button className="btn btn-primary">Get Started</button>
+      <button  className="btn btn-primary" > Get Started</button>
     </div>
   </div>
 </div>
-      <div className='flex lg:justify-center lg:p-2 p-4 bg-slate-300 shadow-lg'><h1 className="text-3xl font-bold">
+      <div id='start' className='flex lg:justify-center lg:p-2 p-4 bg-slate-300 shadow-lg'><h1 className="text-3xl font-bold">
         Best Platform for Collaboration!
       </h1></div>
       <div className='grid lg:grid-cols-2 grid-cols-1'>
