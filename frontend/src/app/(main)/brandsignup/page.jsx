@@ -23,11 +23,28 @@ const brandSignup = () => {
       cpassword: '',
       website: ''
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
+
+
       setTimeout(() => {
         console.log(values);
         resetForm();
       }, 2000)
+
+      const res = await fetch("http://localhost:5000/brand/add", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log(res.status);
+      if (res.status === 200) {
+        enqueueSnackbar("user addedsuccessfully", { variant: "success" })
+        router.push("/login")
+      } else {
+        enqueueSnackbar("somthing went worng", { variant: "warning" })
+      }
     },
     validationSchema: signupValidationSchema
   })

@@ -1,75 +1,92 @@
 'use client'
-
+import React from 'react'
 import './page.css'
-import React, { useEffect, useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { useFormik } from 'formik';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { enqueueSnackbar } from 'notistack';
+
 const brandlogin = () => {
 
-  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const loginForm = useFormik({
+    initialValues: {
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
-    actions.setSubmitting(false);
-    // Your submission logic here
-  };
+      email: '',
+      password: ''
+
+    },
+    onSubmit: async (values, { resetForm }) => {
+
+
+      setTimeout(() => {
+        console.log(values);
+        resetForm();
+      }, 2000)
+
+      const res = await fetch("http://localhost:5000/brand/authenticate", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log(res.status);
+      if (res.status === 200) {
+        enqueueSnackbar("user login successfully", { variant: "success" })
+        router.push("/")
+      } else {
+        enqueueSnackbar("sothing went worng", { variant: "warning" })
+      }
+    },
+
+  })
   return (
     <>
+      <div className="hero min-h-screen md:justify-end ">
+        <div className="hero-content mr-48 w-full">
 
-      <div className="hero min-h-screen bg-blend-luminosity">
-        <div className="flex items-center justify-center bg-transparent">
-          <div className={`transition-opacity duration-700 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="p-8 transition-all transform bg-transparent  shadow-2xl rounded-lg scale-95 hover:scale-100">
-              <h2 className="text-2xl font-semibold text-center">Brand-Login</h2>
-              <Formik
-                initialValues={{ email: '', password: '' }}
-                onSubmit={handleSubmit}
-              >
-                {({ isSubmitting }) => (
-                  <Form className="mt-8 space-y-6">
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium">Email</label>
-                      <Field
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="you@example.com"
-                        className="mt-1 p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="password" className="block text-sm font-medium ">Password</label>
-                      <Field
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="••••••••"
-                        className="mt-1 p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                    <button type="submit" disabled={isSubmitting} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                          <path fillRule="evenodd" d="M10 5a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L11 7.414V14a1 1 0 11-2 0V7.414L7.707 9.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 5zm-8 9a1 1 0 100-2h16a1 1 0 100 2H2z" clipRule="evenodd" />
-                        </svg>
-                      </span>
-                      {isSubmitting ? 'Submitting...' : 'Login'}
-                    </button>
-                  </Form>
-                )}
-              </Formik>
-            </div>
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-200 opacity-75 hover:opacity-100  ">
+            <form onSubmit={loginForm.handleSubmit} className="card-body">
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text ">Email</span>
+                </label>
+                <input type="email" placeholder="email" className="input input-bordered" id="email"
+                  onChange={loginForm.handleChange}
+                  value={loginForm.values.email} required />
+                {
+                  loginForm.touched.email &&
+                  <small className="text-red-500">{loginForm.errors.email}</small>
+                }
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text ">Password</span>
+                </label>
+                <input type="password" placeholder=" Password" className="input input-bordered" id="password"
+                  onChange={loginForm.handleChange}
+                  value={loginForm.values.password} required />
+                {
+                  loginForm.touched.password &&
+                  <small className="text-red-500">{loginForm.errors.password}</small>
+                }
+              </div>
+              <div className="text-center my-2">
+                <button className='btn btn-primary'>Login</button>
+              </div>
+            </form>
+
+
           </div>
         </div>
+
       </div>
-
-
-
     </>
   )
 }
 
-export default brandlogin;
+export default brandlogin
