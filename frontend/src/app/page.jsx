@@ -28,6 +28,7 @@ const Home = () => {
 
     <>
       <Navbar />
+<<<<<<< HEAD
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -40,6 +41,20 @@ const Home = () => {
         </div>
       </div>
       <div className='flex lg:justify-center lg:p-2 p-4 bg-slate-300 shadow-lg'><h1 className="text-3xl font-bold">
+=======
+      <div className="hero min-h-screen scroll-smooth" style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>
+  <div className="hero-overlay bg-opacity-60"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl font-bold "> BICO! </h1>
+      <h2 className='text-2xl font-bold'>"Brand Influencer Collaboration"</h2>
+      <p className="mb-5 text-xl"> BICO is a platform for all the social media influencers and Brands/Companies to collaborate!</p>
+     <a href="#start"><button  className="btn btn-primary scroll-auto " > Get Started</button></a> 
+    </div>
+  </div>
+</div>
+      <div id='start' className='flex lg:justify-center lg:p-2 p-4 bg-slate-300 shadow-lg scroll-smooth'><h1 className="text-3xl font-bold">
+>>>>>>> 8afd925136b201e7b6ad8690bd879d59675b8461
         Best Platform for Collaboration!
       </h1></div>
       <div className='grid lg:grid-cols-2 grid-cols-1'>
@@ -70,12 +85,12 @@ const Home = () => {
         </div>
       </div>
       <div className='py-3'>
-        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands Category</h1>
+        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
 
         <AdminProfile />
       </div>
       <div className='py-3'>
-        <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers Category</h2>
+        <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>
         <UserProfile />
       </div>
       <Footer />

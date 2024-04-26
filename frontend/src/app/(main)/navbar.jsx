@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <a className="btn  mx-3" href='option'>Sign Up</a>
-          <a className="btn " href='/login'>Login</a>
+          <a className="btn " href='/loginoption'>Login</a>
         </div>
       </div>
     </>

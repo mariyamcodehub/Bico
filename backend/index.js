@@ -11,6 +11,7 @@ const userRouter = require('./routers/userRouter');
 const campaignRouter = require('./routers/campaignRouter');
 const utilRouter = require('./routers/utilRouter');
 const feedbackRouter = require('./routers/feedbackRouter')
+const brandRouter = require('./routers/brandRouter')
 
 // middleware
 app.use(cors({
@@ -22,6 +23,7 @@ app.use( '/user', userRouter );
 app.use( '/campaign', campaignRouter );
 app.use( '/feedback', feedbackRouter );
 app.use( '/util', utilRouter );
+app.use('/brand', brandRouter);
 
 app.use(express.static("./static/uploads"));
 
