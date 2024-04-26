@@ -31,7 +31,7 @@ const campaign = () => {
           <h2 className="card-title">{campaign.name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <Link href={'/campaign-details/'+campaign._id} className="btn btn-primary">Join Campaign</Link>
+            <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
           </div>
         </div>
       </div>
@@ -59,4 +59,4 @@ const campaign = () => {
   )
 }
 
-export default campaign
+export default campaign;
