@@ -9,11 +9,7 @@ const MainLayout = ({ children }) => {
         <>
             <Navbar />
             {children}
-<<<<<<< HEAD
             <Footer />
-=======
-            
->>>>>>> 8afd925136b201e7b6ad8690bd879d59675b8461
         </>
     )
 }
