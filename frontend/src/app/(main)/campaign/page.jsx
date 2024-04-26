@@ -4,6 +4,40 @@ import React, { useEffect, useState } from 'react'
 
 const campaign = () => {
 
+  const [campaignList, setCampaignList] = useState([]);
+
+  const fetchCampaigns = () => {
+    fetch('http://localhost:5000/campaign/getall')
+      .then((response) => {
+        return response.json();
+      }).then(data => {
+        console.log(data);
+        setCampaignList(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    fetchCampaigns();
+  }, [])
+
+  const displayCampaigns = () => {
+    return campaignList.map(campaign => (
+      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div className="card-body">
+          <h2 className="card-title">{campaign.name}</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="card-actions justify-end">
+            <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+
 
   return (
     <div>
@@ -25,5 +59,4 @@ const campaign = () => {
   )
 }
 
-
-export default campaign
+export default campaign;
