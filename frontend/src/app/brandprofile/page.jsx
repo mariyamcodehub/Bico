@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import brandprofile from '../../brandprofile/page';
 
 const brandprofile = () => {
 
@@ -6,7 +8,7 @@ const brandprofile = () => {
   const [brandprofileList, setbrandprofileList] = useState([]);
 
   const fetchbrandprofile = () => {
-    fetch('http://localhost:5000/brandprofile/getall')
+    fetch('http://localhost:5000/brand/getall')
       .then((response) => {
         return response.json();
       }).then(data => {
@@ -23,14 +25,14 @@ const brandprofile = () => {
   }, [])
 
   const displaybrandprofile = () => {
-    return List.map(campaign => (
+    return List.map(brandprofile => (
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
         <div className="card-body">
-          <h2 className="card-title">{campaign.name}</h2>
+          <h2 className="card-title">{brandprofile.name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+            <Link href={'/brandprofile-details/' + brandprofile._id} className="btn btn-primary">Join Campaign</Link>
           </div>
         </div>
       </div>
