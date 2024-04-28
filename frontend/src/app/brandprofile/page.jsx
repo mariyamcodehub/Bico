@@ -1,13 +1,14 @@
 'use client'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import brandprofile from '../../brandprofile/page';
+
 
 const brandprofile = () => {
 
 
   const [brandprofileList, setbrandprofileList] = useState([]);
 
-  const fetchbrandprofile = () => {
+  const fetchprofile = () => {
     fetch('http://localhost:5000/brand/getall')
       .then((response) => {
         return response.json();
@@ -21,18 +22,18 @@ const brandprofile = () => {
   }
 
   useEffect(() => {
-    fetchbrandprofile();
+    fetchprofile();
   }, [])
 
-  const displaybrandprofile = () => {
-    return List.map(brandprofile => (
+  const displayprofile = () => {
+    return brandprofileList.map(profile => (
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
         <div className="card-body">
-          <h2 className="card-title">{brandprofile.name}</h2>
+          <h2 className="card-title">{profile.name}</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <Link href={'/brandprofile-details/' + brandprofile._id} className="btn btn-primary">Join Campaign</Link>
+            <Link href={'/brandprofile-details/' + profile._id} className="btn btn-primary">Join Campaign</Link>
           </div>
         </div>
       </div>
@@ -84,7 +85,7 @@ const brandprofile = () => {
       <button className="btn btn-primary">Buy Now</button>
     </div>
     <div className='grid grid-cols-4 gap-20'>
-        {displayCampaigns()}
+        {displayprofile()}
       </div>
   </div>
 </div>
