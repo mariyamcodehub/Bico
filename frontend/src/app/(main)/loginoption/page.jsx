@@ -10,7 +10,7 @@ const loginoption = () => {
                 <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center m-36">Are you Influencer?
                     <a href='/login' className="link">Login!</a></div>
                 <div className="divider lg:divider-horizontal">OR</div>
-                <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center m-36">SignUp as a Brand
+                <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center m-36">Login! as a Brand
                     <a href='/brandlogin' className="link">Login!</a>
                 </div>
             </div>
