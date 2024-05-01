@@ -1,100 +1,62 @@
 'use client'
-<<<<<<< HEAD
 import React from 'react'
-
-
-const brandProfile = () => {
-=======
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
 
 
 const brandprofile = () => {
 
 
-  const [brandprofileList, setbrandprofileList] = useState([]);
+  return (
+    <>
+      <div className='flex flex-row '>
+        < div className="card w-3/5 bg-base-100 shadow-xl m-10 p-5" >
+          <div className="avatar">
+            <div className="w-24 mx-auto rounded-full">
+              <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+          </div>
+          <div className="card-body">
+            <h2 className="card-title mx-auto">Reebok</h2>
 
-  const fetchprofile = () => {
-    fetch('http://localhost:5000/brand/getall')
-      .then((response) => {
-        return response.json();
-      }).then(data => {
-        console.log(data);
-        setbrandprofileList(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
-  useEffect(() => {
-    fetchprofile();
-  }, [])
+            <h3 className='font-bold'>About</h3>
+            <p>Hey! I am Anaya Lorem ipsum dolor sit amet cliquam ea est necessitatibus quam, corporis maxime donsectetur adipisicing elit. Et excepturi blanditiis aolor officiis unde ratione ducimus?</p>
+            <div className="card-actions justify-end my-3">
+              <button className="btn btn-neutral">Email</button>
+            </div>
 
-  const displayprofile = () => {
-    return brandprofileList.map(profile => (
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
-        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-        <div className="card-body">
-          <h2 className="card-title">{profile.name}</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <Link href={'/brandprofile-details/' + profile._id} className="btn btn-primary">Join Campaign</Link>
+            <div className='flex'>
+              <p>Website-Media Link</p>
+              <a href='https://www.linkedin.com/in/mariyam-khan-4176331b4/' className="link no-underline link-primary">LinkedIn</a></div>
+            <div className='flex '>
+              <p>Country</p><p className='text-right'>India</p>
+            </div>
+            <div className='flex'>
+              <p>username</p><p className='text-right'>brand603</p></div>
+
+          </div>
+
+        </div >
+
+        <div className='flex flex-col w-full '>
+          <h1 className='font-bold text-2xl py-10'>Campaign History</h1>
+          <div className='grid grid-cols-2 gap-8'>
+            <div className="card w-96 bg-base-100 shadow-xl">
+              <figure className="px-10 pt-10">
+                <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+              </figure>
+              <div className="card-body items-center text-center">
+                <h2 className="card-title">Reebok</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="card-actions">
+                  <button className="btn btn-primary">show details</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    ))
-  }
->>>>>>> 20186c301147eb3bf7abdde88579d78b96d8c44d
-
-
-  return (
-
-    <div className="card w-96 bg-base-100 shadow-xl m-10 ">
-      <div className="avatar ">
-        <div className="">
-          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg " />
-        </div>
-      </div>
-<<<<<<< HEAD
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">Reebok!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions">
-          <button className="btn btn-primary">Show more</button>
-        </div>
-=======
-      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div className="card w-96 bg-base-100 shadow-xl m-10 ">
-<div className="avatar ">
-  <div className="">
-    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg " />
-  </div>
-</div>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-    <div className='grid grid-cols-4 gap-20'>
-        {displayprofile()}
->>>>>>> 20186c301147eb3bf7abdde88579d78b96d8c44d
-      </div>
-    </div>
+    </>
   )
 }
 
-export default brandProfile
+export default brandprofile;
