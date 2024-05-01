@@ -1,10 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react'
-import Navbar from './(main)/navbar'
 import Stats from './(main)/stats/page'
-import AdminProfile from './admin/profile/page'
 import UserProfile from './user/profile/page'
-import Footer from './(main)/footer'
+import Brandprofile from './brandprofile/page';
+import Navbar from './(main)/navbar';
+import Footer from './(main)/footer';
 
 const Home = () => {
 
@@ -72,14 +72,13 @@ const Home = () => {
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
 
-        <AdminProfile />
+        <Brandprofile />
       </div>
       <div className='py-3'>
         <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>
         <UserProfile />
       </div>
       <Footer />
-
     </>
   )
 }
