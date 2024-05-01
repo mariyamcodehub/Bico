@@ -173,5 +173,5 @@ export default brandprofileDetails;
   )
 }
 
-export default brandProfile
+export default brandProfile;
 
