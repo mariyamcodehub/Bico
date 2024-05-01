@@ -2,9 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
+<<<<<<< HEAD
+import Footer from './(main)/footer'
+import Link from 'next/link';
+=======
 import Brandprofile from './brandprofile/page';
 import Navbar from './(main)/navbar';
 import Footer from './(main)/footer';
+>>>>>>> 8dee866ade82adb865ffd0792633a3690f8c56b6
 
 const Home = () => {
 
@@ -43,6 +48,11 @@ const Home = () => {
         Best Platform for Collaboration!
       </h1></div>
       <div className='grid lg:grid-cols-2 grid-cols-1'>
+      <div className='text-center bg-cover bg-center bg-slate-200 my-3'> 
+        <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
+        <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+
+      </div>
         {
           campaign.map((camp) => {
             return (
@@ -60,15 +70,18 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              
             )
           })
+          
         }
 
         <div className='p-5 min-h-52 bg-slate-200 my-3'>
-          <h1 className='text-3xl font-semibold my-3'>Dashboard</h1>
+          <h1 className='text-3xl font-semibold my-3 text-center'>Dashboard</h1>
           <Stats />
         </div>
       </div>
+      
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
 
