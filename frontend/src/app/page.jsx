@@ -2,14 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
-<<<<<<< HEAD
 import Footer from './(main)/footer'
 import Link from 'next/link';
-=======
-import Brandprofile from './brandprofile/page';
-import Navbar from './(main)/navbar';
-import Footer from './(main)/footer';
->>>>>>> 8dee866ade82adb865ffd0792633a3690f8c56b6
 
 const Home = () => {
 
