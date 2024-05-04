@@ -4,6 +4,8 @@ import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
 import Footer from './(main)/footer'
 import Link from 'next/link';
+import Brandprofile from './brandprofile/page';
+import Navbar from './(main)/navbar';
 
 const Home = () => {
 
@@ -26,7 +28,7 @@ const Home = () => {
 
 
     <>
-      <Navbar />
+      <Navbar/>
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -79,7 +81,7 @@ const Home = () => {
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
 
-        <Brandprofile />
+        <Brandprofile/>
       </div>
       <div className='py-3'>
         <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>
