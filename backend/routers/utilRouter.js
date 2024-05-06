@@ -16,8 +16,7 @@ const storage = multer.diskStorage({
 const uploader = multer({storage});
 
 router.post('/uploadfile', uploader.single('myfile'), (req, res) => {
-    console.log(req.savedFile);
-    res.status(200).json({message: 'file uploaded successfully', savedFile : req.savedFile });
+    res.status(200).json({message: 'file uploaded successfully' });
 })
 
 module.exports = router;

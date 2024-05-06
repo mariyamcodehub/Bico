@@ -4,7 +4,10 @@ import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
 import Footer from './(main)/footer'
 import Link from 'next/link';
+<<<<<<< HEAD
 import Brandprofile from './brandprofile/page';
+=======
+>>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
 import Navbar from './(main)/navbar';
 
 const Home = () => {
@@ -23,10 +26,21 @@ const Home = () => {
     getcampaign()
   }, [])
 
+  const [brand, setbrand] = useState([]);
+
+  const getbrand = async () => {
+    const res = await fetch("http://localhost:3000/brand/getall")
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setbrand(data);
+  }
+
+  useEffect(() => {
+    getbrand()
+  }, [])
 
   return (
-
-
     <>
       <Navbar />
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
@@ -77,11 +91,34 @@ const Home = () => {
           <Stats />
         </div>
       </div>
+<<<<<<< HEAD
 
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
+=======
+>>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
 
-        <Brandprofile />
+      <div className='py-3'>
+        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>{
+
+          campaign.map((brand) => {
+            return (
+              <div>
+                <div className="card card-side bg-base-300 shadow-xl m-5">
+                  <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                  <div className="card-body">
+
+                    <h3>{brand.name}</h3>
+                    <p>{brand.email}</p>
+                    <p>{brand.website}</p>
+
+                  </div>
+                </div>
+              </div>
+
+            )
+          })
+        }
       </div>
       <div className='py-3'>
         <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>

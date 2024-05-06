@@ -11,11 +11,12 @@ import { enqueueSnackbar } from 'notistack';
 const CampaignForm = () => {
 
     const [campaign, setCampaign] = useState([]);
+    const [currentBrand, setCurrentBrand] = useState(JSON.parse(sessionStorage.getItem('brand')));
 
     const uploadImage = async (e) => {
-        const file = e.target.value[0];
-        setCampaign(file);
+        const file = e.target.files[0];
         const fd = new FormData();
+        // console.log(file);
         fd.append("myfile", file);
         fetch("http://localhost:5000/util/uploadfile", {
             method: "POST",
@@ -23,6 +24,7 @@ const CampaignForm = () => {
         }).then((res) => {
             if (res.status === 200) {
                 console.log("file upload");
+                campainForm.setFieldValue('coverImage', file.name);
                 enqueueSnackbar("image uploaded successfully", { variant: "success" })
             }
         });
@@ -34,14 +36,13 @@ const CampaignForm = () => {
             title: '',
             description: '',
             coverImage: '',
-            incentive: ''
+            incentive: '',
+            brand: currentBrand._id
         },
         onSubmit: async (values, { resetForm }) => {
 
-            values.coverImage = campaign.name;
             setTimeout(() => {
                 console.log(values);
-
                 resetForm();
             }, 2000)
 
@@ -73,17 +74,6 @@ const CampaignForm = () => {
                         <form onSubmit={campainForm.handleSubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text ">Brand-Name</span>
-                                </label>
-                                <input type="name" placeholder="Brand-Name" id='name' className="input input-bordered" onChange={campainForm.handleChange} value={campainForm.values.name} />
-                                {
-                                    campainForm.touched.name &&
-                                    <small className="text-red-500">{campainForm.errors.name}</small>
-                                }
-
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
                                     <span className="label-text ">Title</span>
                                 </label>
                                 <input type="text" placeholder="Title" className="input input-bordered" id="title"
@@ -93,18 +83,17 @@ const CampaignForm = () => {
                                     campainForm.touched.title &&
                                     <small className="text-red-500">{campainForm.errors.title}</small>
                                 }
-                            </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text ">Description</span>
+                                    <span className="label-text ">Required-Follower</span>
                                 </label>
-                                <input type="text" placeholder="Description" className="input input-bordered" id="description"
-                                    onChange={campainForm.handleChange}
-                                    value={campainForm.values.description} required />
+                                <input type="name" placeholder="Brand-Name" id='name' className="input input-bordered" onChange={campainForm.handleChange} value={campainForm.values.name} />
                                 {
-                                    campainForm.touched.description &&
-                                    <small className="text-red-500">{campainForm.errors.description}</small>
+                                    campainForm.touched.name &&
+                                    <small className="text-red-500">{campainForm.errors.name}</small>
                                 }
+
+                            </div>
                             </div>
                             <div className="form-control">
                                 <div className="form-control">
@@ -126,10 +115,23 @@ const CampaignForm = () => {
                                         <small className="text-red-500">{campainForm.errors.incentive}</small>
                                     }
                                 </div>
-                                <button disabled={campainForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Uploade Campaign</button>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text ">Description</span>
+                                </label>
+                                <textarea type="text" placeholder="Description" className="textarea textarea-bordered textarea-sm w-full max-w-xs" id="description"
+                                
+                                    onChange={campainForm.handleChange}
+                                    value={campainForm.values.description} required />
+                                {
+                                    campainForm.touched.description &&
+                                    <small className="text-red-500">{campainForm.errors.description}</small>
+                                }
+                            </div>
+                                <button disabled={campainForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Upload Campaign</button>
                             </div>
                         </form>
-                        <p className='p-3  mx-auto'>Already Registered? <Link className='hover:text-green-600' href='/login'>Login Here</Link></p>
+                       
                     </div>
                 </div>
 

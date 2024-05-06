@@ -20,12 +20,6 @@ const Login = () => {
     },
     onSubmit: async (values, { resetForm }) => {
 
-
-      setTimeout(() => {
-        console.log(values);
-        resetForm();
-      }, 2000)
-
       const res = await fetch("http://localhost:5000/user/authenticate", {
         method: "POST",
         body: JSON.stringify(values),
@@ -36,6 +30,9 @@ const Login = () => {
       console.log(res.status);
       if (res.status === 200) {
         enqueueSnackbar("user login successfully", { variant: "success" })
+        const data = await res.json();
+        sessionStorage.setItem('user', JSON.stringify(data));
+        resetForm();
         router.push("/")
       } else {
         enqueueSnackbar("sothing went worng", { variant: "warning" })
