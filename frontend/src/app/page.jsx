@@ -56,7 +56,7 @@ const Home = () => {
       <div className='grid lg:grid-cols-2 grid-cols-1'>
         <div className='text-center bg-cover bg-center bg-slate-200 my-3'>
           <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
-          <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+          <a href="/campaign"><button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Click Here!</button></a>
 
         </div>
         {
