@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Model = require('../models/userModel');
+const Model = require('../models/enrollModel');
 
 router.post('/add', (req, res) => {
     console.log(req.body);
@@ -13,23 +13,9 @@ router.post('/add', (req, res) => {
     });
 });
 
-router.post("/authenticate",(req,res) => {
-    console.log(req.body);
-    Model.findOne(req.body)
-    .then((result) => {
-        if(result){
-            res.status(200).json(result)
-        }else{
-            res.status(401).json({message:"inavlide credentials"})
-        }
-    }).catch((err) => {
-        res.status(500).json(err);
-        console.log(err);
-    })
-})
 
 router.get('/getall', (req, res) => {
-    Model.find()
+    Model.find({})
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
@@ -52,6 +38,26 @@ router.delete('/delete/:id', (req, res) => {
 
 router.put('/update/:id', (req, res) => {
     Model.findByIdAndUpdate(req.params.id, req.body)
+    .then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.get('/getbyid/:id', (req, res) => {
+    Model.findById(req.params.id)
+    .then((result) => {
+        res.status(200).json(result);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.get('/getbyuser/:id', (req, res) => {
+    Model.findOne({user : req.params.id})
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {

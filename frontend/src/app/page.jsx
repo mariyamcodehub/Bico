@@ -4,7 +4,6 @@ import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
 import Footer from './(main)/footer'
 import Link from 'next/link';
-import Brandprofile from './brandprofile/page';
 import Navbar from './(main)/navbar';
 
 const Home = () => {
@@ -23,12 +22,23 @@ const Home = () => {
     getcampaign()
   }, [])
 
+  const [brand, setbrand] = useState([]);
+
+  const getbrand = async () => {
+    const res = await fetch("http://localhost:3000/brand/getall")
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setbrand(data);
+  }
+
+  useEffect(() => {
+    getbrand()
+  }, [])
 
   return (
-
-
     <>
-      <Navbar/>
+      <Navbar />
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -44,11 +54,11 @@ const Home = () => {
         Best Platform for Collaboration!
       </h1></div>
       <div className='grid lg:grid-cols-2 grid-cols-1'>
-      <div className='text-center bg-cover bg-center bg-slate-200 my-3'> 
-        <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
-        <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+        <div className='text-center bg-cover bg-center bg-slate-200 my-3'>
+          <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
+          <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
 
-      </div>
+        </div>
         {
           campaign.map((camp) => {
             return (
@@ -66,10 +76,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              
+
             )
           })
-          
+
         }
 
         <div className='p-5 min-h-52 bg-slate-200 my-3'>
@@ -77,11 +87,28 @@ const Home = () => {
           <Stats />
         </div>
       </div>
-      
-      <div className='py-3'>
-        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
 
-        <Brandprofile/>
+      <div className='py-3'>
+        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>{
+
+          campaign.map((brand) => {
+            return (
+              <div>
+                <div className="card card-side bg-base-300 shadow-xl m-5">
+                  <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                  <div className="card-body">
+
+                    <h3>{brand.name}</h3>
+                    <p>{brand.email}</p>
+                    <p>{brand.website}</p>
+
+                  </div>
+                </div>
+              </div>
+
+            )
+          })
+        }
       </div>
       <div className='py-3'>
         <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>

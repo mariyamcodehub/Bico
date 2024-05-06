@@ -1,12 +1,13 @@
-const { Schema, model } = require('../connection');
+const { Schema, model, Types } = require('../connection');
 
 const mySchema = new Schema({
-    name : String,
-    title:String,
-    description:String,
-    coverImage : String,
-    postedOn : Date,
-    incentive : {type : String, default : 0}
+    brand: { type: Types.ObjectId, ref: 'brand' },
+    title: String,
+    description: String,
+    coverImage: String,
+    incentive: { type: String, default: 0 },
+    requiredFollowers: Number,
+    postedOn: { type: Date, default: Date.now }
 });
 
 module.exports = model('campaign', mySchema);

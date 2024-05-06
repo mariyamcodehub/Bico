@@ -26,10 +26,13 @@ const campaign = () => {
   const displayCampaigns = () => {
     return campaignList.map(campaign => (
       <div className="card card-compact min-w-64 bg-base-100 shadow-xl">
-        <figure><img src={campaign} alt="Shoes" /></figure>
+        <figure><img src={'http://localhost:5000/'+campaign.coverImage} alt="img" /></figure>
         <div className="card-body">
-          <h2 className="card-title">{campaign.name}</h2>
+          
+          <h2 className='card-title'>{campaign.title}</h2>
           <h2 className="card-title">{campaign.incentive}</h2>
+          <h2>{campaign.requiredFollower}</h2>
+          <p>{campaign.description}</p>
 
           <div className="card-actions justify-end">
             <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
