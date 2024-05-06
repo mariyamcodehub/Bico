@@ -4,10 +4,6 @@ import Stats from './(main)/stats/page'
 import UserProfile from './user/profile/page'
 import Footer from './(main)/footer'
 import Link from 'next/link';
-<<<<<<< HEAD
-import Brandprofile from './brandprofile/page';
-=======
->>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
 import Navbar from './(main)/navbar';
 
 const Home = () => {
@@ -91,12 +87,6 @@ const Home = () => {
           <Stats />
         </div>
       </div>
-<<<<<<< HEAD
-
-      <div className='py-3'>
-        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
-=======
->>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
 
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>{
