@@ -14,6 +14,7 @@ const feedbackRouter = require('./routers/feedbackRouter')
 const brandRouter = require('./routers/brandRouter')
 const enrollRouter = require('./routers/enrollRouter')
 
+
 // middleware
 app.use(cors({
     origin: 'http://localhost:3000'
@@ -26,6 +27,7 @@ app.use( '/feedback', feedbackRouter );
 app.use( '/util', utilRouter );
 app.use('/brand', brandRouter);
 app.use('/enroll', enrollRouter);
+
 
 app.use(express.static("./static/uploads"));
 

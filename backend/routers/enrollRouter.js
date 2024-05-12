@@ -57,7 +57,7 @@ router.get('/getbyid/:id', (req, res) => {
 });
 
 router.get('/getbyuser/:id', (req, res) => {
-    Model.findOne({user : req.params.id})
+    Model.find({user : req.params.id}).populate('campaign')
     .then((result) => {
         res.status(200).json(result);
     }).catch((err) => {
@@ -65,5 +65,6 @@ router.get('/getbyuser/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
 
 module.exports = router;

@@ -1,13 +1,9 @@
 'use client';
+import './page.css'
 import React, { useEffect, useState } from 'react'
 import Stats from './(main)/stats/page'
-import UserProfile from './user/profile/page'
 import Footer from './(main)/footer'
 import Link from 'next/link';
-<<<<<<< HEAD
-import Brandprofile from './brandprofile/page';
-=======
->>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
 import Navbar from './(main)/navbar';
 
 const Home = () => {
@@ -29,7 +25,7 @@ const Home = () => {
   const [brand, setbrand] = useState([]);
 
   const getbrand = async () => {
-    const res = await fetch("http://localhost:3000/brand/getall")
+    const res = await fetch("http://localhost:5000/brand/getall")
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -40,11 +36,25 @@ const Home = () => {
     getbrand()
   }, [])
 
+  const [influencer, setinfluencer] = useState([]);
+
+  const getinfluencer = async () => {
+    const res = await fetch("http://localhost:5000/user/getall")
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setinfluencer(data);
+  }
+
+  useEffect(() => {
+    getinfluencer()
+  }, [])
+
   return (
     <>
       <Navbar />
-      <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
-        <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero min-h-screen bg" >
+        <div className="hero-overlay bg-opacity-60 "></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold "> BICO! </h1>
@@ -61,12 +71,12 @@ const Home = () => {
         <div className='text-center bg-cover bg-center bg-slate-200 my-3'>
           <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
           <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
-
         </div>
         {
           campaign.map((camp) => {
+
             return (
-              <div>
+              <div className='flex flex-col'>
                 <div className="card card-side bg-base-300 shadow-xl m-5">
                   <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
                   <div className="card-body">
@@ -91,42 +101,59 @@ const Home = () => {
           <Stats />
         </div>
       </div>
-<<<<<<< HEAD
+
+
 
       <div className='py-3'>
-        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>
-=======
->>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec
+        <h1 className='text-2xl bg-slate-300 font-bold p-3 text-center'>Brands </h1> <div className='flex flex-row'>{
 
-      <div className='py-3'>
-        <h1 className='text-2xl bg-slate-300 font-bold p-3'>Brands </h1>{
-
-          campaign.map((brand) => {
+          brand.map((brands) => {
             return (
-              <div>
-                <div className="card card-side bg-base-300 shadow-xl m-5">
-                  <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
-                  <div className="card-body">
 
-                    <h3>{brand.name}</h3>
-                    <p>{brand.email}</p>
-                    <p>{brand.website}</p>
+              <div className="card card-side bg-base-300 shadow-xl m-5">
+                <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                <div className="card-body">
 
-                  </div>
+                  <h3>{brands.name}</h3>
+                  <p>{brands.email}</p>
+                  <p>{brands.website}</p>
+
                 </div>
               </div>
+
 
             )
           })
         }
+        </div>
       </div>
       <div className='py-3'>
-        <h2 className='text-2xl bg-slate-300 font-bold p-3'>Influencers</h2>
-        <UserProfile />
+        <h1 className='text-2xl bg-slate-300 font-bold p-3 text-center'>Influencers </h1> <div className='flex flex-row'>{
+
+          influencer.map((influencers) => {
+            return (
+
+              <div className="card card-side bg-base-300 shadow-xl m-5">
+                <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                <div className="card-body">
+
+                  <h3>{influencers.name}</h3>
+                  <p>{influencers.email}</p>
+                  <p>{influencers.website}</p>
+
+                </div>
+              </div>
+
+
+            )
+          })
+        }
+        </div>
       </div>
       <Footer />
     </>
   )
 }
+
 
 export default Home

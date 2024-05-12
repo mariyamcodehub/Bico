@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 const CampaignDetails = () => {
 
   const [campaignDetail, setCampaignDetail] = useState(null);
-  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('influencer')));
   const { id } = useParams();
 
   const fetchCampaigns = () => {
@@ -20,11 +20,31 @@ const CampaignDetails = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+  //function to fetch enrolled members
+
+  const [enrolledMembers, setEnrolledMembers] = useState([]);
+
+  const getEnrolledMembers = async () => {
+    const res = await fetch("http://localhost:5000/enroll/getall")
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setEnrolledMembers(data);
+    setCurrentUser(JSON.parse(localStorage.getItem('influencer')));
   }
+
+  useEffect(() => {
+    getEnrolledMembers()
+  }, [])
+
+
 
   useEffect(() => {
     fetchCampaigns();
   }, [])
+
+  //function to display enrolled members
 
   const displayCampaign = () => {
     if (campaignDetail === null) {
@@ -45,6 +65,10 @@ const CampaignDetails = () => {
 
 
   const enrollCampaign = () => {
+    if (!currentUser) {
+      enqueueSnackbar('Login to participate in Campaign', { variant: 'warning' });
+      return;
+    }
     // check if user is already enrolled
     fetch('http://localhost:5000/enroll/getbyuser/' + currentUser._id)
       .then((response) => {
@@ -67,6 +91,8 @@ const CampaignDetails = () => {
           })
             .then((response) => {
               if (response.status === 200) {
+                //update enrolledmember state
+                setEnrolledMembers([...enrolledMembers, currentUser]);
                 enqueueSnackbar('User enrolled', { variant: 'success' })
               }
             }).catch((err) => {
@@ -82,10 +108,34 @@ const CampaignDetails = () => {
   }
 
   return (
-    <div className='lg:w-4/5 mx-auto my-20'>
+    <div className='lg:w-4/5 mx-auto my-20 '>
       {displayCampaign()}
+      <div className='py-3'>
+        <h1 className='text-2xl bg-slate-300 font-bold p-3 text-center'>Enrolled </h1> <div className='flex flex-row'>{
+
+          enrolledMembers.map((member) => {
+            return (
+
+              <div className="card card-side bg-base-300 shadow-xl m-5">
+                <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                <div className="card-body">
+
+                  <h3>{member.user}</h3>
+                  <h2>{member.image}</h2>
+                  <h2>{member.username}</h2>
+
+
+                </div>
+              </div>
+
+
+            )
+          })
+        }
+        </div>
+      </div>
     </div>
   )
 }
 
-export default CampaignDetails
+export default CampaignDetails;

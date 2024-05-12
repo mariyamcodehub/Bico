@@ -1,9 +1,11 @@
 'use client'
-import React from 'react'
 
+import React from 'react'
+import useInfluencerContext from '@/context/InfluencerContext'
 
 const profileDetails = () => {
 
+    const { currentInfluencer } = useInfluencerContext();
 
     return (
         <>
@@ -15,7 +17,7 @@ const profileDetails = () => {
                         </div>
                     </div>
                     <div className="card-body">
-                        <h2 className="card-title mx-auto">Anaya Joe</h2>
+                        <h2 className="card-title mx-auto">Anaya</h2>
                         <div className="stats shadow ">
 
                             <div className="stat ">

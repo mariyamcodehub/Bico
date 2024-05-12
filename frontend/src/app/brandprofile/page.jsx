@@ -2,6 +2,7 @@
 import React from 'react'
 
 
+
 const brandprofile = () => {
 
 
@@ -58,9 +59,5 @@ const brandprofile = () => {
     </>
   )
 }
+export default brandprofile;
 
-<<<<<<< HEAD
-export default brandprofile;
-=======
-export default brandprofile;
->>>>>>> d5ab95036e8e54a82aeffa96869abc64da35f6ec

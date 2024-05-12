@@ -1,7 +1,10 @@
 'use client'
+
+import Link from 'next/link';
 import React from 'react'
 
 const Navbar = () => {
+
 
   return (
     <>
@@ -41,8 +44,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn  mx-3" href='option'>Sign Up</a>
-          <a className="btn " href='/loginoption'>Login</a>
+          <Link className="btn mx-3" href='option'>Sign Up</Link>
+          <Link className="btn" href='/loginoption'>Login</Link>
         </div>
       </div>
     </>

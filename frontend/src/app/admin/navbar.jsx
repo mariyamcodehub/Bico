@@ -3,7 +3,7 @@ import React from 'react'
 const AdminNavbar = () => {
   return (
     <div>
-      navbar
+      <button className='btn'>Delete All</button>
     </div>
   )
 }

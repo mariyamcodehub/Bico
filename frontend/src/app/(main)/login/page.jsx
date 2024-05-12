@@ -6,10 +6,13 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { enqueueSnackbar } from 'notistack';
+import useInfluencerContext from '@/context/InfluencerContext';
 
 const Login = () => {
 
   const router = useRouter();
+
+  const { setCurrentInfluencer, setInfluencerLoggedIn } = useInfluencerContext();
 
   const loginForm = useFormik({
     initialValues: {
@@ -31,9 +34,11 @@ const Login = () => {
       if (res.status === 200) {
         enqueueSnackbar("user login successfully", { variant: "success" })
         const data = await res.json();
-        sessionStorage.setItem('user', JSON.stringify(data));
+        setInfluencerLoggedIn(true);
+        setCurrentInfluencer(data);
+        localStorage.setItem('influencer', JSON.stringify(data));
         resetForm();
-        router.push("/")
+        router.push("/user/profile")
       } else {
         enqueueSnackbar("sothing went worng", { variant: "warning" })
       }

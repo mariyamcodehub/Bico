@@ -1,6 +1,26 @@
+'use client'
 import React from 'react'
+import useBrandContext from '@/context/BrandContext'
+import Link from 'next/link';
 
 const navbar = () => {
+
+    const { brandLoggedIn, brandLogout } = useBrandContext();
+
+
+    const displayLoginOptions = () => {
+
+        // console.log(influencerLoggedIn);
+        if (!brandLoggedIn) {
+            return <>
+                <Link className="btn mx-3" href='option'>Sign Up</Link>
+                <Link className="btn" href='/loginoption'>Login</Link>
+            </>
+        } else {
+
+            return <button onClick={brandLogout}>Logout</button>
+        }
+    }
     return (
         <div>
             <div className="navbar bg-slate-200">
@@ -25,7 +45,7 @@ const navbar = () => {
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li>{displayLoginOptions()}</li>
                         </ul>
                     </div>
                 </div>

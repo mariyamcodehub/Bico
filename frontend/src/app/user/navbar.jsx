@@ -1,7 +1,27 @@
+'use client'
 import React from 'react'
-
+import useInfluencerContext from '@/context/InfluencerContext'
+import Link from 'next/link';
 const UserNavbar = () => {
+
+    const { influencerLoggedIn, influencerLogout } = useInfluencerContext();
+
+
+    const displayLoginOptions = () => {
+        // console.log(influencerLoggedIn);
+        if (!influencerLoggedIn) {
+            return <>
+                <Link className="btn mx-3" href='option'>Sign Up</Link>
+                <Link className="btn" href='/loginoption'>Login</Link>
+            </>
+        } else {
+
+            return <button onClick={influencerLogout}></button>
+        }
+    }
     return (
+
+
         <div className="navbar bg-slate-200">
             <div className="flex-1">
                 <a className="btn btn-ghost text-xl">BICO</a>
@@ -50,7 +70,7 @@ const UserNavbar = () => {
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li>{displayLoginOptions()}</li>
                     </ul>
                 </div>
             </div>
