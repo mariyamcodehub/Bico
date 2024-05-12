@@ -70,12 +70,7 @@ const Home = () => {
       <div className='grid lg:grid-cols-2 grid-cols-1'>
         <div className='text-center bg-cover bg-center bg-slate-200 my-3'>
           <h1 className='m-20  text-5xl font-bold'>See Live Campaigns !</h1>
-<<<<<<< HEAD
           <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
-=======
-          <a href="/campaign"><button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Click Here!</button></a>
-
->>>>>>> 80b6ad517eaf4399e885629b6d9a2c69921cc2ea
         </div>
         {
           campaign.map((camp) => {
@@ -106,14 +101,11 @@ const Home = () => {
           <Stats />
         </div>
       </div>
-<<<<<<< HEAD
 
 
 
       <div className='py-3'>
         <h1 className='text-2xl bg-slate-300 font-bold p-3 text-center'>Brands </h1> <div className='flex flex-row'>{
-=======
->>>>>>> 80b6ad517eaf4399e885629b6d9a2c69921cc2ea
 
           brand.map((brands) => {
             return (
