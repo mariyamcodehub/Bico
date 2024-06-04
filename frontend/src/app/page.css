@@ -1,4 +1,4 @@
-.bg {
-    background-image: url(./BG.png);
+.hero {
+    background-image: url(./bg-hero.png);
     background-size: cover;
 }

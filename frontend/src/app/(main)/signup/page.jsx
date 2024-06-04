@@ -13,18 +13,36 @@ const Signup = () => {
 
   const signupValidationSchema = Yup.object().shape({
     email: Yup.string().email('email is invalid').required('email is required'),
-    username: Yup.string().required('name is required'),
+    name: Yup.string().required('name is required'),
     password: Yup.string().required('password is required').min(6, 'too short').matches(/[a-z]/, 'password must contain lowercase letter').matches(/[A-Z]/, 'password must contain uppercase letter').matches(/[0-9]/, 'password must contain a number').matches(/\W/, 'password must contain special symbol'),
     cpassword: Yup.string().required('confirm password is required').oneOf([Yup.ref('password'), null], 'password must match')
   })
 
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const fd = new FormData();
+    // console.log(file);
+    fd.append("myfile", file);
+    fetch("http://localhost:5000/util/uploadfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("file upload");
+        signupForm.setFieldValue('image', file.name);
+        enqueueSnackbar("image uploaded successfully", { variant: "success" })
+      }
+    });
+  }
+
   const signupForm = useFormik({
     initialValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
       cpassword: '',
-      social: ''
+      social: '',
+      image: ''
     },
     onSubmit: async (values, { resetForm }) => {
 
@@ -62,10 +80,10 @@ const Signup = () => {
                 <label className="label">
                   <span className="label-text ">Name</span>
                 </label>
-                <input type="name" placeholder="Name" id='username' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.username} />
+                <input type="name" placeholder="Name" id='name' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.name} />
                 {
-                  signupForm.touched.username &&
-                  <small className="text-red-500">{signupForm.errors.username}</small>
+                  signupForm.touched.name &&
+                  <small className="text-red-500">{signupForm.errors.name}</small>
                 }
 
               </div>
@@ -110,6 +128,13 @@ const Signup = () => {
                     <span className="label-text ">Social-Link</span>
                   </label>
                   <input type="social" placeholder="Social-Link" className="input input-bordered" id='social' required />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text ">Upload Image</span>
+                  </label>
+                  <input type="file" placeholder="Upload Campaign" id='image' className="file-input input-bordered file-input-accent" onChange={uploadImage} required />
+
                 </div>
                 <button disabled={signupForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Sign Up</button>
               </div>

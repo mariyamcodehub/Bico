@@ -1,10 +1,26 @@
 'use client'
 import React from 'react'
-
+import { useState, useEffect } from 'react';
+import Footer from '../(main)/footer';
+import Link from 'next/link';
 
 
 const brandprofile = () => {
+  const [campaign, setCampaign] = useState([]);
+  const [currentBrand, setCurrentBrand] = useState(JSON.parse(localStorage.getItem('brand')));
 
+  const getcampaign = async () => {
+    const res = await fetch("http://localhost:5000/campaign/getbybrand/" + currentBrand._id)
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    setCampaign(data);
+  }
+
+  useEffect(() => {
+    getcampaign()
+    setCurrentBrand()
+  }, [])
 
   return (
     <>
@@ -16,7 +32,8 @@ const brandprofile = () => {
             </div>
           </div>
           <div className="card-body">
-            <h2 className="card-title mx-auto">Reebok</h2>
+
+            <h2 className="card-title mx-auto"></h2>
 
 
             <h3 className='font-bold'>About</h3>
@@ -40,22 +57,33 @@ const brandprofile = () => {
 
         <div className='flex flex-col w-full '>
           <h1 className='font-bold text-2xl py-10'>Campaign History</h1>
-          <div className='grid grid-cols-2 gap-8'>
-            <div className="card w-96 bg-base-100 shadow-xl">
-              <figure className="px-10 pt-10">
-                <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">Reebok</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions">
-                  <button className="btn btn-primary">show details</button>
+          {
+            campaign.map((camp) => {
+
+              return (
+                <div className='flex flex-col'>
+                  <div className="card card-side bg-base-300 shadow-xl m-5">
+                    <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+                    <div className="card-body">
+
+                      <h2 className="card-title">{camp.title}</h2>
+                      <h3>{camp.name}</h3>
+                      <p>{camp.description}</p>
+                      <p>{camp.incentive}</p>
+                      <div className="card-actions justify-end">
+                        <Link href={'/view-campaign/' + campaign._id} className="btn btn-primary">Details</Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
+
+              )
+            })
+
+          }
         </div>
       </div>
+      <Footer />
     </>
   )
 }

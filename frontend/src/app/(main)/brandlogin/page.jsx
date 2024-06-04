@@ -37,7 +37,7 @@ const brandlogin = () => {
       if (res.status === 200) {
         enqueueSnackbar("user login successfully", { variant: "success" })
         const data = await res.json();
-        sessionStorage.setItem('brand', JSON.stringify(data));
+        localStorage.setItem('brand', JSON.stringify(data));
         router.push("/")
       } else {
         enqueueSnackbar("sothing went worng", { variant: "warning" })

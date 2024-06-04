@@ -12,4 +12,28 @@ module.exports = {
     extend: {},
   },
   plugins: [require("daisyui")],
+
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          "body": {
+            "background-color": "#FCF3CF",
+            "border-color": "#F9E79F",
+            "font-family": ['"Poppins"'],
+          },
+          ".bg-clr": {
+            "background-color": "#EDBB99"
+          },
+          ".btn": {
+            "background-color": " #FDD835 ",
+            "color": "#006666",
+            "border": "none"
+          },
+
+        },
+      },
+    ],
+  },
 }

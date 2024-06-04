@@ -38,7 +38,7 @@ const Login = () => {
         setCurrentInfluencer(data);
         localStorage.setItem('influencer', JSON.stringify(data));
         resetForm();
-        router.push("/user/profile")
+        router.push("/");
       } else {
         enqueueSnackbar("sothing went worng", { variant: "warning" })
       }
@@ -76,10 +76,14 @@ const Login = () => {
                   loginForm.touched.password &&
                   <small className="text-red-500">{loginForm.errors.password}</small>
                 }
+                <label className="label">
+                  <a href="forgetpassword" className="label-text-alt link link-hover">Forgot password?</a>
+                </label>
               </div>
               <div className="text-center my-2">
                 <button className='btn btn-primary'>Login</button>
               </div>
+
             </form>
 
 
