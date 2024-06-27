@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react'
 const CampaignDetails = () => {
 
   const [campaignDetail, setCampaignDetail] = useState(null);
-  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('influencer')));
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('influencer'));
   const { id } = useParams();
 
   const fetchCampaigns = () => {
-    fetch('http://localhost:5000/campaign/getbybrand/' + id)
+    fetch(`http://localhost:5000/campaign/getbyid/${id}`)
       .then((response) => {
         return response.json();
       }).then(data => {
@@ -26,7 +26,7 @@ const CampaignDetails = () => {
   const [enrolledMembers, setEnrolledMembers] = useState([]);
 
   const getEnrolledMembers = async () => {
-    const res = await fetch("http://localhost:5000/enroll/getall")
+    const res = await fetch(`http://localhost:5000/enroll/getbyuser/${id}`)
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -45,10 +45,13 @@ const CampaignDetails = () => {
       return <h3>Loading...</h3>
     } else {
       return <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure><img src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" /></figure>
+        <figure><img className=' w-full' src={'http://localhost:5000/' + campaignDetail.image} alt="campaign" /></figure>
         <div className="card-body">
-          <h2 className="card-title">{campaign.title}</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
+          <h2 className="card-title">{campaignDetail.title}</h2>
+          <p>{campaignDetail.description}</p>
+          <p>{campaignDetail.incentive}</p>
+          <p>{campaignDetail.requiredFollowers}</p>
+
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={enrollCampaign}>Enroll</button>
           </div>
@@ -64,7 +67,7 @@ const CampaignDetails = () => {
       return;
     }
     // check if user is already enrolled
-    fetch('http://localhost:5000/enroll/getbyuser/' + currentUser._id)
+    fetch('http://localhost:5000/enroll/findbyid/' + currentUser._id)
       .then((response) => {
         return response.json()
       })

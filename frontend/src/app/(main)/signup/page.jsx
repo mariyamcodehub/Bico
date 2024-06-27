@@ -41,7 +41,7 @@ const Signup = () => {
       email: '',
       password: '',
       cpassword: '',
-      social: '',
+      username: '',
       image: ''
     },
     onSubmit: async (values, { resetForm }) => {
@@ -125,9 +125,9 @@ const Signup = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text ">Social-Link</span>
+                    <span className="label-text ">Username</span>
                   </label>
-                  <input type="social" placeholder="Social-Link" className="input input-bordered" id='social' required />
+                  <input type="username" placeholder="Username" className="input input-bordered" id='username' required />
                 </div>
                 <div className="form-control">
                   <label className="label">

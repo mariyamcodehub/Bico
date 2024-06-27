@@ -1,11 +1,10 @@
 'use client'
 import Stats from '../stats/page'
 import React from 'react'
-import useInfluencerContext from '@/context/InfluencerContext'
+
 
 const profileDetails = () => {
 
-    const { currentInfluencer } = useInfluencerContext();
 
     return (
         <>

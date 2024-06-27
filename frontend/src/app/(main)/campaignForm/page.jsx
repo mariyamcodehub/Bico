@@ -33,7 +33,7 @@ const CampaignForm = () => {
 
     const campainForm = useFormik({
         initialValues: {
-            brand: currentBrand._id,
+            brand: '',
             name: '',
             title: '',
             description: '',

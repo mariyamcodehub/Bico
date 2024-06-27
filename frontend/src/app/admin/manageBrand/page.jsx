@@ -40,8 +40,8 @@ const ManageUser = () => {
 
     const displayuser = () => {
         return (
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-                <thead className="bg-gray-50 dark:bg-neutral-700">
+            <table className="min-w-full bg-slate-800 divide-y divide-gray-200 dark:divide-neutral-700">
+                <thead className="bg-slate-600 ">
                     <tr>
                         <th scope="col" className="py-3 ps-4">
                             <div className="flex items-center h-5">
@@ -57,25 +57,25 @@ const ManageUser = () => {
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
                             Name
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
                             Email
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
                             Password
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-end text-xs font-medium text-white uppercase "
                         >
                             Action
                         </th>

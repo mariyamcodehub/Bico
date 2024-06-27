@@ -5,7 +5,8 @@ const mySchema = new Schema({
     email: String,
     password: String,
     cpassword: String,
-    website: String
+    website: String,
+    image: Array
 });
 
 module.exports = model('brand', mySchema);

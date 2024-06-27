@@ -1,12 +1,13 @@
 .bico {
-    background-image: url(../user/BICO.png);
-    background-size: cover;
-    width: 60px;
-    height: 60px;
+    background-image: url(../user/bico.png);
+    background-size: contain;
+    width: 100px;
+    height: 40px;
+    background-repeat: no-repeat;
 }
 
 .navbar {
-    background-color: #006666c3;
+    background-color: #273746;
 }
 
 .footer {

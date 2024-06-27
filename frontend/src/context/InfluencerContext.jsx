@@ -1,54 +1,37 @@
 'use client'
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-const { createContext, useState, useContext } = require("react");
+import React, { createContext, useContext, useState } from 'react';
+import axios from 'axios';
 
 const InfluencerContext = createContext();
 
-
-export const InfluencerProvider = ({ children }) => {
-
-    const [currentInfluencer, setCurrentInfluencer] = useState(
-        JSON.parse(localStorage.getItem('influencer'))
-    );
-
-    const router = useRouter();
-
-    useEffect(() => {
-        // Retrieve data from local storage and parse it
-        const storedInfluencer = localStorage.getItem('influencer');
-        if (storedInfluencer) {
-            try {
-                const parsedInfluencer = JSON.parse(storedInfluencer);
-                setCurrentInfluencer(parsedInfluencer);
-            } catch (error) {
-                console.error("Error parsing influencer data:", error);
-                // Handle parsing error (e.g., clear invalid data)
-                localStorage.removeItem('influencer');
-            }
-        }
-    }, []);
-
-    const [influencerLoggedIn, setInfluencerLoggedIn] = useState(currentInfluencer !== null)
-
-    const influencerLogout = () => {
-        localStorage.removeItem('influencer');
-        setInfluencerLoggedIn(false);
-        router.push('/');
-    }
-
-    return <InfluencerContext.Provider value={{
-        influencerLoggedIn,
-        setInfluencerLoggedIn,
-        currentInfluencer,
-        setCurrentInfluencer,
-        influencerLogout
-    }}>
-        {children}
-    </InfluencerContext.Provider>
+export const useInfluencerContext = () => {
+    return useContext(InfluencerContext);
 };
 
+export const InfluencerProvider = ({ children }) => {
+    const [currentInfluencer, setCurrentInfluencer] = useState(null);
 
-const useInfluencerContext = () => useContext(InfluencerContext);
+    const fetchInfluencer = async (id) => {
+        try {
+            const response = await axios.get(`/api/influencers/${id}`);
+            setCurrentInfluencer(response.data);
+        } catch (error) {
+            console.error('Error fetching influencer:', error);
+        }
+    };
 
-export default useInfluencerContext;
+    const updateInfluencer = async (id, data) => {
+        try {
+            await axios.put(`/api/influencers/${id}`, data);
+            setCurrentInfluencer(data); // Update the state with new data
+        } catch (error) {
+            console.error('Error updating influencer:', error);
+        }
+    };
+
+    return (
+        <InfluencerContext.Provider value={{ currentInfluencer, fetchInfluencer, updateInfluencer }}>
+            {children}
+        </InfluencerContext.Provider>
+    );
+};
