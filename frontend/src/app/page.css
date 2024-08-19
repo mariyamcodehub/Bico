@@ -7,9 +7,11 @@
     overflow: hidden;
     width: 100%;
     position: relative;
+
 }
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease;
+
 }

@@ -15,6 +15,20 @@ const Influencers = () => {
         getInfluencer();
     }, []);
 
+    function formatFollowers(followers) {
+        if (followers >= 1000000) {
+            return `${(followers / 1000000).toFixed(1)}M`;
+        } else if (followers >= 100000) {
+            return `${Math.floor(followers / 1000)}k`;
+        } else if (followers >= 10000) {
+            return `${(followers / 1000).toFixed(1)}k`;
+        } else if (followers >= 1000) {
+            return `${(followers / 1000).toFixed(1)}k`;
+        }
+        return followers;
+    }
+
+
     return (
         <>
             <div>
@@ -29,20 +43,28 @@ const Influencers = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
                     </label>
                 </div>
-                <div className='py-3'>
-                    <div className='grid md:grid-cols-4 grid-cols-2'>
+                <div className='p-3'>
+                    <div className='grid md:grid-cols-3 grid-cols-1 gap-2'>
                         {influencer.map((user, index) => (
-                            <div className="card card-side w-64 bg-base-100 shadow-xl m-5" key={index}>
-                                <div className='w-40 h-32 mask mask-squircle'>
-                                    <img className='w-24 h-32 pt-3' src={`http://localhost:5000/${user.image}`} alt="profile" />
-                                </div>
+                            <div className="card card-side w-full bg-base-100 shadow-xl p-3" key={index}>
+                                <figure>
+                                    <img className='w-32 h-32 pt-3 rounded-full' src={`http://localhost:5000/${user.image}`} alt="profile" />
+                                </figure>
                                 <div className="card-body w-64">
-                                    <h3>{user.name}</h3>
-                                    <div className='badge'>Followers</div>
-                                    <Link href={`/user/profile`}>
-                                        <button type="button" className="px-3 py-2 text-xs font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-teal-700 dark:focus:ring-blue-800">Show Profile</button>
-                                    </Link>
-                                    <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-xs px-3 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Message</button>
+                                    <h3 className='card-title capitalize border-b-4'>{user.name}</h3>
+                                    <p className='text-md font-semibold font-sans text-cyan-60'>Followers <span className='float-right text-xl '>{formatFollowers(user.followers)}</span></p>
+                                    <h4 className='font-semibold font-sans'>Category <span className='badge badge-accent badge-outline float-right'>Digital Creator</span></h4>
+                                    <div className=''>
+                                        <Link href={`https://x.com/kawaii_mariie`} target='_blank'><p className='link link-success'>Social Profile</p></Link>
+                                        <Link href={`/user/profile`}>
+                                            <button type="button" className="p-3 rounded-full text-xs font-medium text-center text-white bg-teal-700  hover:bg-teal-800 ">Show more</button>
+                                        </Link>
+                                        <Link href={`/user/profile`}>
+                                            <button type="button" className="text-white bg-gray-800 hover:bg-gray-900  font-medium rounded-full text-xs p-3 ml-2">Message</button>
+                                        </Link>
+                                    </div>
+
+
                                 </div>
                             </div>
                         ))}

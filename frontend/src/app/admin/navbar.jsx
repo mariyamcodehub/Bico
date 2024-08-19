@@ -3,17 +3,13 @@ import Link from 'next/link';
 const AdminNavbar = () => {
   return (
     <div className='bg-base-100'>
-      <div className='flex flex-row justify-evenly p-3 my-3'>
-        <div className=' '>
-          <Link href={'/'}><button className='btn btn-outline  btn-sm mr-1'>Home</button></Link>
-          <Link href={'/brands'}><button className='btn btn-outline btn-sm mr-1'>Brands</button></Link>
-          <Link href={'/influencers'}><button className='btn btn-outline btn-sm mr-1'>Influencers</button></Link>
-          <Link href={'/campaign'}><button className='btn btn-outline btn-sm mr-1'>Campaigns</button></Link>
-          <Link href={'/campaignForm'}><button className='btn btn-outline btn-sm '>Campaign form</button></Link>
-        </div>
-        <div>
-          <Link href={'/option'}><button className='btn btn-outline btn-sm mr-1'>SignUp</button></Link>
-          <Link href={'/loginoption'}><button className='btn btn-outline btn-sm '>login</button></Link>
+      <div className='flex flex-row justify-center '>
+        <div className='p-10 '>
+          <Link href={'/dashboard'}><button className='btn btn-outline  btn-sm mr-1'>dashboard</button></Link>
+          <Link href={'/manageBrand'}><button className='btn btn-outline btn-sm mr-1'>Manage Brand</button></Link>
+          <Link href={'/manageuser'}><button className='btn btn-outline btn-sm mr-1'>Manage User</button></Link>
+          <Link href={'/managecampaign'}><button className='btn btn-outline btn-sm mr-1'>Manage Campaigns</button></Link>
+
         </div>
       </div>
 

@@ -69,7 +69,7 @@ const ManageUser = () => {
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+              className="px-6 py-3 text-start text-xs font-medium text-gray-600 uppercase dark:text-neutral-500"
             >
               Password
             </th>
@@ -98,13 +98,13 @@ const ManageUser = () => {
                       </label>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
                     {a.name}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                     {a.email}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                     {a.password}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">

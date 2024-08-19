@@ -25,19 +25,25 @@ const campaign = () => {
 
   const displayCampaigns = () => {
     return campaignList.map(campaign => (
-      <div className="card card-compact min-w-64 bg-base-100 shadow-xl">
-        <img src={'http://localhost:5000/' + campaign.coverImage} alt="img" />
+      <div className="card card-compact min-w-64 bg-base-100 shadow-xl gap-0 m-0 p-0">
+        <figure><img className='w-full h-40' src={'http://localhost:5000/' + campaign.image} alt="img" /></figure>
 
-        <div className="card-body">
-
-          <h2 className='card-title'>{campaign.title}</h2>
-          <h2 className="card-title">{campaign.incentive}</h2>
-          <h2>{campaign.requiredFollower}</h2>
-          <p>{campaign.description}</p>
-
-          <div className="card-actions justify-end">
-            <Link href={'/campaign-details/' + campaign._id} className="btn btn-primary">Join Campaign</Link>
+        <div className="card-body gap-0 m-0 p-0">
+          <div className='flex flex-row justify-between'>
+            <h1 className='text-emerald-700 font-semibold text-xl gap-0 m-0 p-0 border-b-4 border-yellow-400'>{campaign.name}</h1>
+            <div className="card-actions justify-end">
+              <Link href={'/campaign-details/' + campaign._id} className="btn btn-outline btn-sm">Join Campaign</Link>
+            </div>
           </div>
+          <h2 className='card-title gap-0 mt-3 p-0'>{campaign.title}</h2>
+          <h2 className="card-title gap-0 m-0 p-0">
+            <svg width="30" height="25" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="30" y="70" font-size="70" font-family="Arial, sans-serif">₹</text>
+            </svg>{campaign.incentive}</h2>
+
+          <p className='gap-0 m-0 p-0'>{campaign.description}</p>
+
+
         </div>
       </div>
     ))
@@ -57,7 +63,7 @@ const campaign = () => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
         </label>
       </div>
-      <div className='grid lg:grid-cols-4 md:grid-cols-3  gap-10'>
+      <div className='grid lg:grid-cols-4 md:grid-cols-3 my-3 px-3 gap-3'>
         {displayCampaigns()}
       </div>
     </div>

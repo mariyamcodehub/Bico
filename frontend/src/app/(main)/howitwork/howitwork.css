@@ -1,0 +1,7 @@
+.joinImg {
+    background-image: url(join.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}

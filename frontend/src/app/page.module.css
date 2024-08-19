@@ -1,0 +1,6 @@
+.imageJoin {
+    background-image: url(/frontend/src/app/images/join.png);
+    background-size: cover;
+    height: 20%;
+    width: 40%;
+}

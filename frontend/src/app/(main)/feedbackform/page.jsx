@@ -1,11 +1,9 @@
 'use client';
 import React from 'react'
-
 import { useFormik } from 'formik';
-import './page.css'
-
 import { useRouter } from 'next/navigation';
 import { enqueueSnackbar } from 'notistack';
+import './feedback.css'
 
 const feedbackform = () => {
 
@@ -46,16 +44,16 @@ const feedbackform = () => {
     })
     return (
         <>
-            <div className="hero bg min-h-screen md:justify-end ">
-                <div className="hero-content  mr-48 w-full">
+            <div className="bg-clr md:flex justify-center py-5 hidden" >
+                <div className="flex justify-end md:w-8/12 p-3 background" >
 
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-200 ">
+                    <div className="card max-w-sm shadow-2xl bg-base-100 ">
                         <form onSubmit={feedbackform.handleSubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text ">Name</span>
+                                    <span className="label-text text-teal-600">Name</span>
                                 </label>
-                                <input type="text" placeholder="Name" id='name' className="input input-bordered" onChange={feedbackform.handleChange} value={feedbackform.values.name} />
+                                <input type="text" placeholder="Name" id='name' className="input input-bordered bg-sky-100" onChange={feedbackform.handleChange} value={feedbackform.values.name} />
                                 {
                                     feedbackform.touched.name &&
                                     <small className="text-red-500">{feedbackform.errors.name}</small>
@@ -64,9 +62,9 @@ const feedbackform = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text ">Email</span>
+                                    <span className="label-text text-teal-600">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" id="email"
+                                <input type="email" placeholder="email" className="input input-bordered bg-sky-100" id="email"
                                     onChange={feedbackform.handleChange}
                                     value={feedbackform.values.email} required />
                                 {
@@ -76,15 +74,15 @@ const feedbackform = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text ">Message</span>
+                                    <span className="label-text text-teal-600">Message</span>
                                 </label>
-                                <input type="text" placeholder="Write your message" className="textarea textarea-info textarea-lg" id="message"
+                                <input type="text" placeholder="Write your message" className="textarea textarea-info textarea-lg bg-sky-100" id="message"
                                     onChange={feedbackform.handleChange}
                                     value={feedbackform.values.message} required />
 
                             </div>
                             <div className="text-center my-2">
-                                <button className='btn btn-primary'>Send</button>
+                                <button className='btn btn-outline'>Send</button>
                             </div>
                         </form>
 

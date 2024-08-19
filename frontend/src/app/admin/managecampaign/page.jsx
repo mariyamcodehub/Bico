@@ -22,7 +22,7 @@ const ManageUser = () => {
     //delete user
     const deleteUser = async (id) => {
         console.log(id);
-        const res = await fetch("http://localhost:5000/user/campaign/" + id, {
+        const res = await fetch("http://localhost:5000/campaign/delete/" + id, {
             method: "DELETE",
         }
 
@@ -57,25 +57,25 @@ const ManageUser = () => {
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
                             Name
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
-                            Email
+                            Title
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-start text-xs font-medium text-white uppercase "
                         >
-                            Password
+                            Incentive
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                            className="px-6 py-3 text-end text-xs font-medium text-white uppercase "
                         >
                             Action
                         </th>
@@ -98,14 +98,14 @@ const ManageUser = () => {
                                             </label>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">
                                         {a.name}
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                        {a.email}
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                                        {a.title}
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                                        {a.password}
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-cyan-600 ">
+                                        {a.incentive}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                         <button

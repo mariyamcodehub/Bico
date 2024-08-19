@@ -15,7 +15,8 @@ const Signup = () => {
     email: Yup.string().email('email is invalid').required('email is required'),
     name: Yup.string().required('name is required'),
     password: Yup.string().required('password is required').min(6, 'too short').matches(/[a-z]/, 'password must contain lowercase letter').matches(/[A-Z]/, 'password must contain uppercase letter').matches(/[0-9]/, 'password must contain a number').matches(/\W/, 'password must contain special symbol'),
-    cpassword: Yup.string().required('confirm password is required').oneOf([Yup.ref('password'), null], 'password must match')
+    cpassword: Yup.string().required('confirm password is required').oneOf([Yup.ref('password'), null], 'password must match'),
+    followers: Yup.number().required('This cannot be empty')
   })
 
   const uploadImage = async (e) => {
@@ -41,7 +42,7 @@ const Signup = () => {
       email: '',
       password: '',
       cpassword: '',
-      username: '',
+      followers: '',
       image: ''
     },
     onSubmit: async (values, { resetForm }) => {
@@ -125,9 +126,14 @@ const Signup = () => {
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text ">Username</span>
+                    <span className="label-text ">Followers</span>
                   </label>
-                  <input type="username" placeholder="Username" className="input input-bordered" id='username' required />
+                  <input type="input" placeholder="Followers" id='followers' className="input input-bordered" onChange={signupForm.handleChange} value={signupForm.values.followers} />
+                  {
+                    signupForm.touched.followers &&
+                    <small className="text-red-500">{signupForm.errors.followers}</small>
+                  }
+
                 </div>
                 <div className="form-control">
                   <label className="label">

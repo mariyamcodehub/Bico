@@ -1,23 +1,16 @@
 'use client';
-import React, { useState } from 'react'
+import React from 'react';
 import './page.css'
 import { useFormik } from 'formik';
-
-import Link from 'next/link';
-
 import { enqueueSnackbar } from 'notistack';
-import { Router } from 'next/router';
 
 
 const CampaignForm = () => {
 
-    const [campaign, setCampaign] = useState([]);
-    const [currentBrand, setCurrentBrand] = useState(JSON.parse(localStorage.getItem('brand')));
-
     const uploadImage = async (e) => {
         const file = e.target.files[0];
         const fd = new FormData();
-        // console.log(file);
+        console.log(file);
         fd.append("myfile", file);
         fetch("http://localhost:5000/util/uploadfile", {
             method: "POST",
@@ -25,7 +18,7 @@ const CampaignForm = () => {
         }).then((res) => {
             if (res.status === 200) {
                 console.log("file upload");
-                campainForm.setFieldValue('coverImage', file.name);
+                campainForm.setFieldValue('image', file.name);
                 enqueueSnackbar("image uploaded successfully", { variant: "success" })
             }
         });
@@ -33,11 +26,10 @@ const CampaignForm = () => {
 
     const campainForm = useFormik({
         initialValues: {
-            brand: '',
             name: '',
             title: '',
             description: '',
-            coverImage: '',
+            image: '',
             incentive: '',
 
         },
@@ -80,19 +72,13 @@ const CampaignForm = () => {
                                 <input type="text" placeholder="Title" className="input input-bordered" id="title"
                                     onChange={campainForm.handleChange}
                                     value={campainForm.values.title} required />
-                                {
-                                    campainForm.touched.title &&
-                                    <small className="text-red-500">{campainForm.errors.title}</small>
-                                }
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text ">Required-Follower</span>
                                     </label>
                                     <input type="name" placeholder="Brand-Name" id='name' className="input input-bordered" onChange={campainForm.handleChange} value={campainForm.values.name} />
-                                    {
-                                        campainForm.touched.name &&
-                                        <small className="text-red-500">{campainForm.errors.name}</small>
-                                    }
+
 
                                 </div>
                             </div>
@@ -101,7 +87,7 @@ const CampaignForm = () => {
                                     <label className="label">
                                         <span className="label-text ">Upload Image</span>
                                     </label>
-                                    <input type="file" placeholder="Upload Campaign" className="file-input input-bordered file-input-accent" onChange={uploadImage} required />
+                                    <input type="file" placeholder="Upload Campaign" id='image' className="file-input input-bordered file-input-accent" onChange={uploadImage} required />
 
                                 </div>
                                 <div className="form-control">
@@ -111,10 +97,7 @@ const CampaignForm = () => {
                                     <input type="text" placeholder="Incentive" className="input input-bordered" id='incentive'
                                         value={campainForm.values.incentive}
                                         onChange={campainForm.handleChange} required />
-                                    {
-                                        campainForm.touched.incentive &&
-                                        <small className="text-red-500">{campainForm.errors.incentive}</small>
-                                    }
+
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -124,12 +107,9 @@ const CampaignForm = () => {
 
                                         onChange={campainForm.handleChange}
                                         value={campainForm.values.description} required />
-                                    {
-                                        campainForm.touched.description &&
-                                        <small className="text-red-500">{campainForm.errors.description}</small>
-                                    }
+
                                 </div>
-                                <button disabled={campainForm.isSubmitting} type='submit' className="btn btn-primary mt-5 text-white">Upload Campaign</button>
+                                <button disabled={campainForm.isSubmitting} type='submit' className="btn btn-outline mt-5 text-white">Upload Campaign</button>
                             </div>
                         </form>
 
